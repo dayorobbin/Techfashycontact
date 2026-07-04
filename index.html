@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechFashy IT Solutions - Save Our Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0E17;
+    --surface: #121826;
+    --surface-2: #1A2233;
+    --line: #262F44;
+    --teal: #17D9BE;
+    --amber: #F2A93C;
+    --text: #EDF0F7;
+    --muted: #8A93AC;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(23,217,190,0.10), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(242,169,60,0.08), transparent 40%);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 36px 28px 28px;
+    position: relative;
+    overflow: hidden;
+    animation: rise 0.6s ease-out;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 160px; height: 160px;
+    background: conic-gradient(from 90deg, var(--teal), var(--amber), var(--teal));
+    filter: blur(60px);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(23,217,190,0.18);
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin-bottom: 26px;
+  }
+
+  /* Mock contact chip - signature element */
+  .contact-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 24px;
+  }
+
+  .avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--amber));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #0A0E17;
+    flex-shrink: 0;
+  }
+
+  .contact-info { flex: 1; min-width: 0; }
+
+  .contact-name {
+    font-weight: 600;
+    font-size: 14.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .status-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--teal);
+    border: 1px solid rgba(23,217,190,0.35);
+    background: rgba(23,217,190,0.08);
+    padding: 4px 9px;
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .btn:active { transform: scale(0.98); }
+
+  .btn-primary {
+    background: var(--teal);
+    color: #06231F;
+  }
+  .btn-primary:hover { filter: brightness(1.08); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .btn-secondary:hover { border-color: var(--teal); }
+
+  .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .hint {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  .footer-brand {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="eyebrow">We've Upgraded</div>
+    <h1>Save our new WhatsApp number</h1>
+    <p class="sub">We've moved to a new platform for faster responses and easier order tracking. One tap saves our new number so you never lose touch.</p>
+
+    <div class="contact-preview">
+      <div class="avatar">TF</div>
+      <div class="contact-info">
+        <div class="contact-name">TECHFASHY IT SOLUTIONS LTD</div>
+        <div class="contact-number">+234 905 534 9962</div>
+      </div>
+      <div class="status-pill">VCF</div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" id="saveBtn" href="techfashy.vcf">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        Add to Contacts
+      </a>
+      <a class="btn btn-secondary" id="chatBtn" href="#" target="_blank" rel="noopener">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.85 9.85 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.05c-.24.68-1.4 1.31-1.93 1.36-.5.05-.99.24-3.35-.7-2.82-1.13-4.63-3.95-4.77-4.13-.14-.19-1.14-1.52-1.14-2.9 0-1.38.72-2.05.98-2.33.26-.28.56-.35.75-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.11.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.5-.15.14-.3.3-.13.58.17.28.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.34 1.46.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.15.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <p class="hint">Tap <strong>Add to Contacts</strong> first, then use WhatsApp to start chatting anytime.<br>On Android, if it downloads instead of opening, tap the downloaded file to save it.</p>
+
+    <div class="footer-brand">
+      <span>TECHFASHY IT SOLUTIONS LTD</span>
+      <span>NG</span>
+    </div>
+  </div>
+
+<script>
+  const NAME = "TECHFASHY IT SOLUTIONS LTD";
+  const NUMBER = "+2349055349962";
+  const WA_MESSAGE = "Hi, I got your new number - saving your contact now!";
+
+  const chatBtn = document.getElementById('chatBtn');
+  chatBtn.href = "https://wa.me/" + NUMBER.replace(/\D/g, "") + "?text=" + encodeURIComponent(WA_MESSAGE);
+</script>
+
+</body>
+</html>
